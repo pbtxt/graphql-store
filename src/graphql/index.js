@@ -3,22 +3,22 @@ const {
   ApolloServerPluginLandingPageLocalDefault,
 } = require("@apollo/server/plugin/landingPage/default");
 const { expressMiddleware } = require("@apollo/server/express4");
-
-const typeDefs = `
-    type Query {
-     hello: String
-    }
-`;
+const { loadFiles } = require("@graphql-tools/load-files");
 
 const resolvers = {
   Query: {
-    hello: () => "hola mundo",
+    getBook: () => {
+      return {
+        title: "Libro 1",
+        author: "Paola B.",
+      };
+    },
   },
 };
 
 const useGraphql = async (app) => {
   const server = new ApolloServer({
-    typeDefs,
+    typeDefs: await loadFiles("./src/**/*.graphql"),
     resolvers,
     playground: true,
     plugins: [ApolloServerPluginLandingPageLocalDefault],
