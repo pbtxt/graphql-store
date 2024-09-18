@@ -4,17 +4,7 @@ const {
 } = require("@apollo/server/plugin/landingPage/default");
 const { expressMiddleware } = require("@apollo/server/express4");
 const { loadFiles } = require("@graphql-tools/load-files");
-
-const resolvers = {
-  Query: {
-    getBook: () => {
-      return {
-        title: "Libro 1",
-        author: "Paola B.",
-      };
-    },
-  },
-};
+const { resolvers } = require("./resolvers");
 
 const useGraphql = async (app) => {
   const server = new ApolloServer({

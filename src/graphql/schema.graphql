@@ -1,8 +1,13 @@
 type Query {
-  getBook: Book!
+  product(id: ID!): Product
+  allProducts: [Product!]!
 }
 
-type Book {
-  title: String
-  author: String
+type Product {
+  id: ID
+  name: String
+  price: Float
+  description: String
+  image: String
+  createdAt: String
 }
