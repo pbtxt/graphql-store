@@ -14,4 +14,11 @@ const allProducts = async (_, args) => {
   return products;
 };
 
-module.exports = { product, allProducts };
+const addProduct = async (_, args) => {
+  const productInfo = args.dto;
+  const newProduct = await service.create(productInfo);
+
+  return newProduct;
+};
+
+module.exports = { product, allProducts, addProduct };
