@@ -21,4 +21,25 @@ const addProduct = async (_, args) => {
   return newProduct;
 };
 
-module.exports = { product, allProducts, addProduct };
+const updateProduct = async (_, args) => {
+  const id = args.id;
+  const infoToUpdate = args.dto;
+  const productUpdated = await service.update(id, infoToUpdate);
+
+  return productUpdated;
+};
+
+const deleteProduct = async (_, args) => {
+  const id = args.id;
+  const deletedProduct = await service.delete(id);
+
+  return deletedProduct.id;
+};
+
+module.exports = {
+  product,
+  allProducts,
+  addProduct,
+  updateProduct,
+  deleteProduct,
+};
