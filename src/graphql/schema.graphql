@@ -7,7 +7,7 @@ type Mutation {
   addProduct(dto: CreateProduct!): Product
   updateProduct(id: ID!, dto: UpdateProductDto!): Product
   deleteProduct(id: ID!): ID
-  login(email: String, password: String): AuthResponse
+  login(email: EmailAddress!, password: String!): AuthResponse
   addCategory(dto: CreateCategoryDto): Category
 }
 
@@ -57,6 +57,8 @@ type AuthResponse {
 }
 
 input CreateCategoryDto {
-  name: String!
-  image: String!
+  name: CategoryName!
+  image: URL!
 }
+
+scalar CategoryName
