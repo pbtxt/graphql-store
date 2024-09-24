@@ -9,7 +9,10 @@ const addCategory = async (_, args, context) => {
   const user = await checkJwtGql(context);
   checkRolesGql(user, "admin");
 
-  return service.create(newCategoryInfo);
+  return service.create({
+    ...newCategoryInfo,
+    image: newCategoryInfo.image.href,
+  });
 };
 
 module.exports = { addCategory };
