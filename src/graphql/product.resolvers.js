@@ -36,10 +36,17 @@ const deleteProduct = async (_, args) => {
   return deletedProduct.id;
 };
 
+const getProductsByCategory = (parent, args) => {
+  const id = parent.dataValues.id;
+
+  return service.getByCategory(id);
+};
+
 module.exports = {
   product,
   allProducts,
   addProduct,
   updateProduct,
   deleteProduct,
+  getProductsByCategory,
 };
